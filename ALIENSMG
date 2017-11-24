@@ -1,0 +1,30 @@
+#include <iostream>
+#include <stdio.h>
+#include <string>
+#include <set>
+
+using namespace std;
+
+int main() {
+	int n, i, j, k;
+	set<string>::iterator itr;
+
+	string entrada;
+	set<string> dna;
+	while(cin >> n && n != 0){
+		dna.clear();
+		for(i=0; i<n; i++){
+			cin >> entrada;
+			for(j=1; entrada[j]!='\0'; j++)
+				for(k=j; k>0; k--)
+					if(entrada[k] < entrada[k-1])
+						swap(entrada[k], entrada[k-1]);
+			dna.insert(entrada);
+		}
+		cout << dna.size() << endl;
+
+	}
+
+
+	return 0;
+}
